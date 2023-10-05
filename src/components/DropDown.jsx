@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export default function DropDown({X, Y, visibility, setVisibility}) {
+export default function DropDown({X, Y, visibility, setVisibility, characters}) {
 
     const myStyle = {
         top: `${Y}px`,
@@ -7,7 +7,7 @@ export default function DropDown({X, Y, visibility, setVisibility}) {
         display: `${visibility}`
     }
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         setVisibility("none");
     }
 
@@ -18,9 +18,13 @@ export default function DropDown({X, Y, visibility, setVisibility}) {
             style={myStyle}
         >
             <ul>
-                <li className=" hover:bg-slate-700 px-4 py-1 rounded-lg" onClick={handleClick}>char 1</li>
-                <li className=" hover:bg-slate-700 px-4 py-1 rounded-lg" onClick={handleClick}>char 2</li>
-                <li className=" hover:bg-slate-700 px-4 py-1 rounded-lg" onClick={handleClick}>char 3</li>
+                {characters.map((character) => {
+                    return(
+                        <li key={character._id} id={character._id} 
+                            className=" hover:bg-slate-700 px-4 py-1 rounded-lg" onClick={handleClick} 
+                        >{character.character}</li>
+                    )
+                })}
             </ul>
         </div>
     )
