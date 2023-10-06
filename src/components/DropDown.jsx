@@ -1,13 +1,24 @@
 /* eslint-disable react/prop-types */
-export default function DropDown({X, Y, visibility, setVisibility, characters}) {
+export default function DropDown({X, Y, visibility, setVisibility, characters, width, height}) {
 
     const myStyle = {
-        top: `${Y}px`,
-        left: `${X+20}px`,
+        top: `${Y*height}px`,
+        left: `${X*width+20}px`,
         display: `${visibility}`
     }
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
+        const response = await fetch(`http://localhost:3000/api/character_information/${e.target.id}`)
+        const character = await response.json();
+        // console.log([X, Y]);
+        // console.log([character.xLeft, character.xRight, character.yUp, character.yDown]);
+        if (X > character.xLeft && X < character.xRight){
+            if (Y > character.yUp && Y < character.yDown){
+                console.log('you got it');
+            }
+        } else {
+            console.log('you dont got it');
+        }
         setVisibility("none");
     }
 

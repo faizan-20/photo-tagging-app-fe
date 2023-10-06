@@ -40,7 +40,7 @@ const RoboCity = () => {
             <div onClick={handleClick} >
                 <img src="../robo-city.jpg" alt="Loading image" className=" object-contain" />
             </div>
-            <DropDown X={X*width} Y={Y*height} visibility={visibility} setVisibility={setVisibility} characters={characters} />
+            <DropDown X={X} Y={Y} width={width} height={height} visibility={visibility} setVisibility={setVisibility} characters={characters} />
         </>
     )
 }
