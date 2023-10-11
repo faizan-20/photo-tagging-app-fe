@@ -1,19 +1,27 @@
-/* eslint-disable react/prop-types */
-export default function DropDown({X, Y, visibility, setVisibility, characters, width, height}) {
+import { useEffect, useState } from "react";
 
-    const myStyle = {
-        top: `${Y*height}px`,
-        left: `${X*width+20}px`,
-        display: `${visibility}`
-    }
+/* eslint-disable react/prop-types */
+export default function DropDown({X, Y, width, height, visibility, setVisibility, characters, setCharacters}) {
+
+    const [myStyle, setMyStyle] = useState({});
+    
+    useEffect(() => {
+        setMyStyle({
+            top: `${Y+30}px`,
+            left: `${X+20}px`,
+            display: `${visibility}`
+        });
+    }, [X, Y, height, visibility, width]);
 
     const handleClick = async (e) => {
         const response = await fetch(`http://localhost:3000/api/character_information/${e.target.id}`)
-        const character = await response.json();
+        const characterInformation = await response.json();
         // console.log([X, Y]);
         // console.log([character.xLeft, character.xRight, character.yUp, character.yDown]);
-        if (X > character.xLeft && X < character.xRight){
-            if (Y > character.yUp && Y < character.yDown){
+        if (Y/height > characterInformation.yUp && Y/height < characterInformation.yDown){
+            if (X/width > characterInformation.xLeft && X/width < characterInformation.xRight){
+                let filteredList = characters.filter(character => character._id !== characterInformation._id);
+                setCharacters(filteredList);
                 console.log('you got it');
             }
         } else {

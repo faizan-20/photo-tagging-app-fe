@@ -2,47 +2,56 @@ import { useEffect, useState } from "react"
 import DropDown from "./DropDown";
 
 const RoboCity = () => {
-
     const [X, setX] = useState(0);
     const [Y, setY] = useState(0);
     const [visibility, setVisibility] = useState("none");
-    const [width, setWidth] = useState(window.innerWidth);
-    const [height, setHeight] = useState(window.innerHeight);
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
     const [characters, setCharacters] = useState([]);
 
     async function fetchCharacters() {
         const response = await fetch('http://localhost:3000/api/character_information');
         const allCharacters = await response.json();
         setCharacters(allCharacters);
-        // console.log(characters);
     }
 
     useEffect(() => {
         fetchCharacters();
     }, []);
-
-    const getCursorPos = () => {
-        setWidth(window.innerWidth);
-        setHeight(window.innerHeight);
-        setX(event.pageX/width);
-        setY(event.pageY/height);
-        console.log([X, Y]);
+    
+    const getCursorPos = (e) => {
+        let rect = e.target.getBoundingClientRect();
+        setWidth(e.target.clientWidth);
+        setHeight(e.target.clientHeight);
+        let x = (e.clientX - rect.left);
+        let y = (e.clientY - rect.top);
+        setX(x);
+        setY(y);
     }
 
-    const handleClick = () => {
-        getCursorPos();
-        if (visibility === "none") setVisibility("flex");
-        else setVisibility("none");
+    const handleClick = (e) => {
+        getCursorPos(e);
+        if (visibility === "none") {
+            setVisibility("flex");
+        }
+        else{
+            setVisibility("none");
+        } 
     }
 
     return (
-        <>
-            <div onClick={handleClick} >
-                <img src="../robo-city.jpg" alt="Loading image" className=" object-contain" />
-            </div>
-            <DropDown X={X} Y={Y} width={width} height={height} visibility={visibility} setVisibility={setVisibility} characters={characters} />
-        </>
-    )
+            <>
+                <div onClick={handleClick} id="robo-city">
+                    <img src="../robo-city.jpg" alt="Loading image" className="object-contain" />
+                </div>
+                <DropDown 
+                    X={X} Y={Y} 
+                    width={width} height={height} 
+                    visibility={visibility} setVisibility={setVisibility} 
+                    characters={characters} setCharacters={setCharacters} 
+                /> 
+            </>
+        )
 }
 
 export default RoboCity;
