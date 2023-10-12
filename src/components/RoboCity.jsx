@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import DropDown from "./DropDown";
+import GameStart from "./GameStart";
 
 const RoboCity = () => {
     const [X, setX] = useState(0);
@@ -8,6 +9,7 @@ const RoboCity = () => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [characters, setCharacters] = useState([]);
+    const [gameStart, setGameStart] = useState(false);
 
     async function fetchCharacters() {
         const response = await fetch('http://localhost:3000/api/character_information');
@@ -41,15 +43,22 @@ const RoboCity = () => {
 
     return (
             <>
+                {
+                    !gameStart && 
+                    <GameStart setGameStart={setGameStart} characters={characters} />
+                }
+                {
+                    gameStart &&
+                    <DropDown 
+                        X={X} Y={Y} 
+                        width={width} height={height} 
+                        visibility={visibility} setVisibility={setVisibility} 
+                        characters={characters} setCharacters={setCharacters} 
+                    />             
+                }
                 <div onClick={handleClick} id="robo-city">
                     <img src="../robo-city.jpg" alt="Loading image" className="object-contain" />
                 </div>
-                <DropDown 
-                    X={X} Y={Y} 
-                    width={width} height={height} 
-                    visibility={visibility} setVisibility={setVisibility} 
-                    characters={characters} setCharacters={setCharacters} 
-                /> 
             </>
         )
 }

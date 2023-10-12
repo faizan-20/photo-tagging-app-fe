@@ -17,7 +17,7 @@ const GameStart = ({ characters, setGameStart }) => {
                             <li key={character._id} id={character._id} 
                                 className=" px-4 py-1 flex items-center"
                             >
-                                <img className=" object-fill w-[8%]" src={character.img} alt="" />
+                                <img className="w-auto h-16" src={character.img} alt="" />
                                 <div className=" ml-4">
                                     {character.character}
                                 </div>

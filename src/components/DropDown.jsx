@@ -16,8 +16,6 @@ export default function DropDown({X, Y, width, height, visibility, setVisibility
     const handleClick = async (e) => {
         const response = await fetch(`http://localhost:3000/api/character_information/${e.target.id}`)
         const characterInformation = await response.json();
-        // console.log([X, Y]);
-        // console.log([character.xLeft, character.xRight, character.yUp, character.yDown]);
         if (Y/height > characterInformation.yUp && Y/height < characterInformation.yDown){
             if (X/width > characterInformation.xLeft && X/width < characterInformation.xRight){
                 let filteredList = characters.filter(character => character._id !== characterInformation._id);
@@ -39,10 +37,13 @@ export default function DropDown({X, Y, width, height, visibility, setVisibility
             <ul>
                 {characters.map((character) => {
                     return(
-                        <li key={character._id} id={character._id} 
-                            className=" hover:bg-slate-700 px-4 py-1 rounded-lg transition-all" onClick={handleClick} 
+                        <li key={character._id} id={character._id}
+                            className="character hover:bg-slate-700 px-4 py-1 rounded-lg transition-all" onClick={handleClick} 
                         >
-                            {character.character}
+                            <div className="flex items-center">
+                                <img id={character._id} className="w-auto h-16" src={character.img} alt="" />
+                                <div id={character._id} className="ml-4">{character.character}</div>
+                            </div>
                         </li>
                     )
                 })}
