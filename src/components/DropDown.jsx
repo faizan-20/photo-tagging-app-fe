@@ -40,8 +40,10 @@ export default function DropDown({X, Y, width, height, visibility, setVisibility
                 {characters.map((character) => {
                     return(
                         <li key={character._id} id={character._id} 
-                            className=" hover:bg-slate-700 px-4 py-1 rounded-lg" onClick={handleClick} 
-                        >{character.character}</li>
+                            className=" hover:bg-slate-700 px-4 py-1 rounded-lg transition-all" onClick={handleClick} 
+                        >
+                            {character.character}
+                        </li>
                     )
                 })}
             </ul>
