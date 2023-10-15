@@ -3,9 +3,10 @@ const GameStart = ({ characters, setGameStart }) => {
 
     return (
         <div 
-            className=" absolute bg-slate-950 text-slate-100 p-6 top-[20%] left-[30%] 
+            className=" absolute bg-slate-950 text-slate-100 p-6 left-0 right-0 ml-auto mr-auto
+                        top-[50%] translate-y-[-50%]
                         rounded-lg shadow-xl shadow-slate-900 flex flex-col justify-around 
-                        h-[60%] text-lg items-center"
+                        h-[60%] text-lg items-center w-[50%] "
         >
             <div className=" text-xl font-bold">
                 Find the characters below in the shortest time.

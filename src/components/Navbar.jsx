@@ -1,4 +1,5 @@
-function Navbar() {
+/* eslint-disable react/prop-types */
+function Navbar({ seconds, minutes }) {
     return (
         <nav className="sticky top-0">
             <div className="nav-container flex justify-evenly items-center bg-slate-900 shadow-sm shadow-slate-800 text-slate-200 text-xl h-16">
@@ -8,7 +9,7 @@ function Navbar() {
                     <div className="navItem ml-10">About</div>
                     <div className="navItem ml-10">Leaderboard</div>
                 </div>
-                <div id="timer">0:00</div>
+                <div id="timer">{minutes}:{seconds}</div>
             </div>
         </nav>
     );
