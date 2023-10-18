@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const GameOver = ({ minutes, seconds }) => {
 
   const [playerName, setPlayerName] = useState("");
+  let navigate = useNavigate();
     
   useEffect(() => {
     document.getElementById("robo-city").scrollIntoView();
@@ -25,6 +26,7 @@ const GameOver = ({ minutes, seconds }) => {
         });
         const result = await response.json();
         console.log(result);
+        navigate('/leaderboard');
     } catch(err) {
         console.error(err);
     }

@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import RoboCity from "./components/RoboCity";
 import Home from "./components/Home";
 import { useState } from "react";
+import Leaderboard from "./components/Leaderboard";
 
 function App() {
   const [gameStart, setGameStart] = useState(false);
@@ -30,6 +31,12 @@ function App() {
               gameOver={gameOver}
               setGameOver={setGameOver}
             />
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <Leaderboard/>
           }
         />
       </Routes>
