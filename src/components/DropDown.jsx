@@ -40,7 +40,7 @@ export default function DropDown({X, Y, width, height, visibility, setVisibility
                         <li key={character._id} id={character._id}
                             className="character hover:bg-slate-700 px-4 py-1 rounded-lg transition-all" onClick={handleClick} 
                         >
-                            <div className="flex items-center">
+                            <div className="flex items-center" id={character._id} >
                                 <img id={character._id} className="w-auto h-16" src={character.img} alt="" />
                                 <div id={character._id} className="ml-4">{character.character}</div>
                             </div>

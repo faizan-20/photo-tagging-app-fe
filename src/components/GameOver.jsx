@@ -11,9 +11,17 @@ const GameOver = ({ minutes, seconds }) => {
     document.getElementById("robo-city").scrollIntoView();
   });
 
+  const getActualTime = () => {
+    let actualMinutes = parseInt(minutes);
+    let actualSeconds = parseInt(seconds);
+    let actualtime = actualMinutes*60 + actualSeconds;
+    return actualtime;
+  }
+
 
   const handleClick = async() => {
     try {
+        let yesTime = getActualTime();
         const response = await fetch('http://localhost:3000/api/save_player', {
             method: 'POST',
             headers: {
@@ -21,7 +29,8 @@ const GameOver = ({ minutes, seconds }) => {
             },
             body: JSON.stringify({
                 player_name: playerName,
-                time: `${minutes}:${seconds}`
+                time: `${minutes}:${seconds}`,
+                actualTime: yesTime,
             }),
         });
         const result = await response.json();
