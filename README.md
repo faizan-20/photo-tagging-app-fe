@@ -15,6 +15,6 @@ The aim of this "Where's Waldo" style game is to find the given set of character
 # Screenshots
 
 1. Home Page ![Home Page](https://raw.githubusercontent.com/faizan-20/photo-tagging-app-fe/main/public/home.png)
-2. Start Pafe ![](https://github.com/faizan-20/photo-tagging-app-fe/blob/main/public/gamestart.png?raw=true)
+2. Start Page ![](https://github.com/faizan-20/photo-tagging-app-fe/blob/main/public/gamestart.png?raw=true)
 3. Game Over ![](https://github.com/faizan-20/photo-tagging-app-fe/blob/main/public/gameover.png?raw=true)
 4. Leaderboard ![](https://github.com/faizan-20/photo-tagging-app-fe/blob/main/public/leaderboard.png?raw=true)
