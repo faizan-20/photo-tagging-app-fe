@@ -11,3 +11,10 @@ The aim of this "Where's Waldo" style game is to find the given set of character
 3. Navigate into the project folder ```cd photo-tagging-app-fe```
 4. Install the dependencies ```npm install```
 5. Start application ```npm run dev```
+
+# Screenshots
+
+1. Home Page ![Home Page](https://raw.githubusercontent.com/faizan-20/photo-tagging-app-fe/main/public/home.png)
+2. Start Pafe ![](https://github.com/faizan-20/photo-tagging-app-fe/blob/main/public/gamestart.png?raw=true)
+3. Game Over ![](https://github.com/faizan-20/photo-tagging-app-fe/blob/main/public/gameover.png?raw=true)
+4. Leaderboard ![](https://github.com/faizan-20/photo-tagging-app-fe/blob/main/public/leaderboard.png?raw=true)
