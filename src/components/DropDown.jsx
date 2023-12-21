@@ -14,7 +14,7 @@ export default function DropDown({X, Y, width, height, visibility, setVisibility
     }, [X, Y, height, visibility, width]);
 
     const handleClick = async (e) => {
-        const response = await fetch(`http://localhost:3000/api/character_information/${e.target.id}`)
+        const response = await fetch(`https://photo-tagging-app-be.onrender.com/api/character_information/${e.target.id}`)
         const characterInformation = await response.json();
         if (Y/height > characterInformation.yUp && Y/height < characterInformation.yDown){
             if (X/width > characterInformation.xLeft && X/width < characterInformation.xRight){

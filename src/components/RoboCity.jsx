@@ -30,7 +30,7 @@ const RoboCity = ({ gameStart, setGameStart, setGameOver, gameOver }) => {
     }, [gameOver, gameStart, minutes, seconds]); 
 
     async function fetchCharacters() {
-        const response = await fetch('http://localhost:3000/api/character_information');
+        const response = await fetch('https://photo-tagging-app-be.onrender.com/api/character_information');
         const allCharacters = await response.json();
         setCharacters(allCharacters);
     }

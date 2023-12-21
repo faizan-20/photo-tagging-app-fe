@@ -22,7 +22,7 @@ const GameOver = ({ minutes, seconds }) => {
   const handleClick = async() => {
     try {
         let yesTime = getActualTime();
-        const response = await fetch('http://localhost:3000/api/save_player', {
+        const response = await fetch('https://photo-tagging-app-be.onrender.com/api/save_player', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

@@ -6,7 +6,7 @@ const Leaderboard = () => {
     const [leaderboard, setLeaderboard] = useState([]);
 
     const fetchData = async() => {
-        const response = await fetch('http://localhost:3000/api/leaderboard');
+        const response = await fetch('https://photo-tagging-app-be.onrender.com/api/leaderboard');
         const Leaderboard = await response.json();
         setLeaderboard(Leaderboard);
     }
