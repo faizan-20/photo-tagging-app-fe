@@ -5,6 +5,7 @@ import RoboCity from "./components/RoboCity";
 import Home from "./components/Home";
 import { useState } from "react";
 import Leaderboard from "./components/Leaderboard";
+import About from "./components/About";
 
 function App() {
 	const [gameStart, setGameStart] = useState(false);
@@ -34,6 +35,7 @@ function App() {
 					}
 				/>
 				<Route path="/leaderboard" element={<Leaderboard />} />
+				<Route path="/about" element={<About />} />
 			</Routes>
 		</>
 	);
