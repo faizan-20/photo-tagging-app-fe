@@ -7,41 +7,36 @@ import { useState } from "react";
 import Leaderboard from "./components/Leaderboard";
 
 function App() {
-  const [gameStart, setGameStart] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
+	const [gameStart, setGameStart] = useState(false);
+	const [gameOver, setGameOver] = useState(false);
 
-  return (
-    <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar />
-              <Home />
-            </>
-          }
-        />
-        <Route
-          path="/robo-city"
-          element={
-            <RoboCity
-              gameStart={gameStart}
-              setGameStart={setGameStart}
-              gameOver={gameOver}
-              setGameOver={setGameOver}
-            />
-          }
-        />
-        <Route
-          path="/leaderboard"
-          element={
-            <Leaderboard/>
-          }
-        />
-      </Routes>
-    </>
-  );
+	return (
+		<>
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<>
+							<Navbar />
+							<Home />
+						</>
+					}
+				/>
+				<Route
+					path="/robo-city"
+					element={
+						<RoboCity
+							gameStart={gameStart}
+							setGameStart={setGameStart}
+							gameOver={gameOver}
+							setGameOver={setGameOver}
+						/>
+					}
+				/>
+				<Route path="/leaderboard" element={<Leaderboard />} />
+			</Routes>
+		</>
+	);
 }
 
 export default App;
