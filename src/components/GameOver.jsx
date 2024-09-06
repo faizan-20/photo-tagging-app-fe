@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const GameOver = ({ minutes, seconds }) => {
 
   const [playerName, setPlayerName] = useState("");
+  const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
     
   useEffect(() => {
@@ -21,6 +22,7 @@ const GameOver = ({ minutes, seconds }) => {
 
   const handleClick = async() => {
     try {
+        setLoading(true);
         let yesTime = getActualTime();
         const response = await fetch('https://photo-tagging-app-be.onrender.com/api/save_player', {
             method: 'POST',
@@ -35,6 +37,7 @@ const GameOver = ({ minutes, seconds }) => {
         });
         const result = await response.json();
         console.log(result);
+        setLoading(false);
         navigate('/leaderboard');
     } catch(err) {
         console.error(err);
@@ -65,7 +68,7 @@ const GameOver = ({ minutes, seconds }) => {
         required
       />
       <div className=" flex w-[40%] justify-around text-slate-200 font-bold">
-        <button className=" border-2 border-green-800 bg-emerald-700 px-2 py-1 rounded-sm" onClick={handleClick} >Save</button>
+        <button className=" border-2 border-green-800 bg-emerald-700 px-2 py-1 rounded-sm" disabled={loading} onClick={handleClick} >Save</button>
         <button>
             <Link className="text-slate-200" to='/'>Cancel</Link>
         </button>
